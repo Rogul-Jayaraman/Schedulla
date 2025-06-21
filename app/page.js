@@ -42,10 +42,10 @@ export default function Home() {
         <div className="lg:w-1/2 flex justify-center">
           <div className="relative w-full max-w-md aspect-square">
             <Image
-              src={poster}
-              alt="Schedulla Poster"
-              layout="fill"
-              objectFit="contain"
+              src="/_next/static/media/poster.d8c433ec.png"
+              fill
+              style={{ objectFit: "cover" }}
+              alt="poster"
             />
           </div>
         </div>

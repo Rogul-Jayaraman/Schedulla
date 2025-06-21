@@ -1,0 +1,84 @@
+generator client {
+  provider = "prisma-client-js"
+  output   = "../lib/generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URI")
+}
+
+model User {
+  id           String        @id @default(uuid())
+  clerkUserId  String        @unique
+  email        String        @unique
+  userName     String        @unique
+  name         String?
+  imageURL     String?
+  createdAt    DateTime      @default(now())
+  updatedAt    DateTime      @updatedAt
+  availability Availability? @relation("UserAvailability")
+  bookings     Booking[]     @relation("UserBookings")
+  events       Event[]       @relation("UserEvents")
+}
+
+model Event {
+  id          String    @id @default(uuid())
+  title       String
+  description String?
+  isPrivate   Boolean   @default(false)
+  duration    Int
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+  userId      String
+  bookings    Booking[] @relation("EventBooking")
+  user        User      @relation("UserEvents", fields: [userId], references: [id])
+}
+
+model Booking {
+  id             String   @id @default(uuid())
+  name           String
+  email          String
+  additionalInfo String?
+  startTime      DateTime
+  endTime        DateTime
+  meetLink       String
+  googleEventId  String
+  createdAt      DateTime @default(now())
+  updatedAt      DateTime @updatedAt
+  userId         String
+  eventId        String
+  event          Event    @relation("EventBooking", fields: [eventId], references: [id], onDelete: Cascade)
+  user           User     @relation("UserBookings", fields: [userId], references: [id])
+}
+
+model Availability {
+  id        String          @id @default(uuid())
+  timeGap   Int
+  createdAt DateTime        @default(now())
+  updatedAt DateTime        @updatedAt
+  userId    String          @unique
+  user      User            @relation("UserAvailability", fields: [userId], references: [id])
+  Days      DaysAvailable[] @relation("DaysAvailable")
+}
+
+model DaysAvailable {
+  id            String       @id @default(uuid())
+  day           DaysOfWeek
+  startTime     DateTime
+  EndTime       DateTime
+  createdAt     DateTime     @default(now())
+  updatedAt     DateTime     @updatedAt
+  availablityId String
+  availability  Availability @relation("DaysAvailable", fields: [availablityId], references: [id], onDelete: Cascade)
+}
+
+enum DaysOfWeek {
+  MONDAY
+  TUEDAY
+  WEDNESDAY
+  THURSDAY
+  FRIDAY
+  SATURDAY
+  SUNDAY
+}

@@ -8,8 +8,11 @@ import { Button } from "../../ui/button";
 import UserMenu from "./Layout/UserMenu";
 import { PenBox } from "lucide-react";
 import { SignedIn, SignedOut, UserButton, SignInButton } from "@clerk/nextjs";
+import { checkUser } from "@/lib/checkUser";
 
-function Header() {
+async function Header() {
+  await checkUser();
+
   return (
     <nav className="mx-auto py-3 px-4 flex justify-between items-center shadow-md border-b-2">
       {/* Navbar left side - Logo*/}
@@ -19,7 +22,7 @@ function Header() {
 
       {/* Navbar right side - Buttons {Login, Create_Event} */}
       <div className="flex gap-3 items-center">
-        <Link href={"/event?create=true"}>
+        <Link href={"/events?create=true"}>
           <Button className="flex items-center gap-2" variant={"default_1"}>
             <PenBox size={10} />
             Create Event

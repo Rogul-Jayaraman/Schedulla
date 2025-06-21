@@ -1,4 +1,4 @@
-import { CalendarPlus, Clock, Link } from "lucide-react";
+import { BarChart, Calendar, CalendarPlus, Clock, Link, Users } from "lucide-react";
 
 export const features = [
   {
@@ -130,3 +130,26 @@ export const howItWorks = [
       "Relax as others schedule appointments directly based on your availability.",
   },
 ];
+
+export const navItems = [
+  {
+    href : "/dashboard", 
+    label : "Dashboard",
+    Icon : BarChart
+  },
+  {
+    href : "/events", 
+    label : "Events",
+    Icon : Calendar
+  },
+  {
+    href : "/meetings", 
+    label : "Meetings",
+    Icon : Users
+  },
+  {
+    href : "/availability", 
+    label : "Availability",
+    Icon : Clock
+  }
+]

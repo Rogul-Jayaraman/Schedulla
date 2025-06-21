@@ -4,6 +4,7 @@ import Header from "@/components/Common/Header/Header.jsx";
 
 import { Inter } from "next/font/google";
 import { ClerkProvider } from "@clerk/nextjs";
+import CreateNewEvent from "@/components/Event/CreateNewEvent";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -31,6 +32,9 @@ export default function RootLayout({ children }) {
               <p>Easily schedule your meetings with Schedulla.</p>
             </div>
           </footer>
+
+          {/* button action -> event/create?true */}
+          <CreateNewEvent />
         </body>
       </html>
     </ClerkProvider>
