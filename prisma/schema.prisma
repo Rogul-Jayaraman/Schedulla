@@ -66,7 +66,8 @@ model DaysAvailable {
   id            String       @id @default(uuid())
   day           DaysOfWeek
   startTime     DateTime
-  EndTime       DateTime
+  endTime       DateTime
+  isAvailable   Boolean
   createdAt     DateTime     @default(now())
   updatedAt     DateTime     @updatedAt
   availablityId String
@@ -75,7 +76,7 @@ model DaysAvailable {
 
 enum DaysOfWeek {
   MONDAY
-  TUEDAY
+  TUESDAY
   WEDNESDAY
   THURSDAY
   FRIDAY

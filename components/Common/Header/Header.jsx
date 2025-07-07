@@ -12,7 +12,7 @@ import { checkUser } from "@/lib/checkUser";
 
 async function Header() {
   await checkUser();
-
+  
   return (
     <nav className="mx-auto py-3 px-4 flex justify-between items-center shadow-md border-b-2">
       {/* Navbar left side - Logo*/}

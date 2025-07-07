@@ -1,7 +1,7 @@
 "use client";
 
 import { usernameSchema } from "../../../assets/data/validators";
-import { updateUserName } from "../../../assets/server/updateUserName";
+import { updateUserName } from "../../../assets/server/user/updateUserName";
 import useFetch from "../../../assets/hooks/useFetch";
 
 import { Button } from "@/components/ui/button";

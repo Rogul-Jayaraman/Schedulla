@@ -123,3 +123,11 @@
     @apply font-extrabold bg-gradient-to-br from-teal-700 to-teal-400 bg-clip-text tracking-tighter text-transparent pb-4 pr-2;
   }
 }
+
+.no-scrollbar::-webkit-scrollbar{
+  display:none;
+}
+.no-scrollbar{
+  -ms-overflow-style:none;
+  scrollbar-width: none;
+}

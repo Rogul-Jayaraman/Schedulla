@@ -64,3 +64,13 @@ export const timeSlots =[
   "22:00", "22:30",
   "23:00", "23:30"
 ]
+
+export const daysOfWeek = [
+  "monday",
+  "tuesday",
+  "wednesday",
+  "thursday",
+  "friday",
+  "saturday",
+  "sunday"
+];

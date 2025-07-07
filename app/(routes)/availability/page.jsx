@@ -1,8 +1,20 @@
-import React from 'react'
+"use client";
+
+import { defaultAvailability } from "@/assets/data/availability";
+import getAvailability from "@/assets/server/availability/getAvailability";
+import AvailabilityForm from "@/components/Availability/AvailabilityForm";
+import { useEffect, useState } from "react";
 
 const AvailabilityPage = () => {
+  const [availability,setAvailability] = useState()
+  useEffect(()=>{
+    const fetchAvailability = async() =>{
+      setAvailability(await getAvailability())
+    }
+    fetchAvailability();
+  },[])
   return (
-    <div>page</div>
+    <AvailabilityForm initialData = {availability || defaultAvailability}/>
   )
 }
 
