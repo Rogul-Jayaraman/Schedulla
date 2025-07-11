@@ -6,3 +6,11 @@ const layout = ({children}) => {
 };
 
 export default layout;
+
+
+export async function generateMetadata(){
+  return{
+    title:"Your Events | Schedulla",
+    description:"Create a new Events"
+  }
+}

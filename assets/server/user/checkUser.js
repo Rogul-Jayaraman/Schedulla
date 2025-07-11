@@ -1,4 +1,4 @@
-import db from "./prisma";
+import db from "../../../lib/prisma";
 import { currentUser, clerkClient } from "@clerk/nextjs/server";
 
 export const checkUser = async() =>{

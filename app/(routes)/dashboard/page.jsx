@@ -12,6 +12,9 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useEffect, useState } from "react";
 import { BarLoader } from "react-spinners";
+import fetchUpcomingMeetings from "@/assets/server/bookings & meetings/fetchUpcomingMeetings";
+import Loading from "@/components/Loading";
+import { format } from "date-fns";
 
 const page = () => {
   const { isLoaded, user } = useUser();
@@ -43,13 +46,32 @@ const page = () => {
     fnUpdateUser(data.username)
   };
 
+  const{loading:loadUpdates,data:upcomingMeets,error:UpdatesError,fn:fnFetchUpcomingMeetings} = useFetch(fetchUpcomingMeetings)
+  useEffect(()=>{
+    fnFetchUpcomingMeetings();
+  },[])
+
   return (
     <div>
       <Card>
         <CardHeader>
           <CardTitle>Welcome, {user?.fullName}</CardTitle>
         </CardHeader>
-        {/* Latest Updates */}
+        <CardContent>
+          {loadUpdates?(<p>Loading Upcoming Meetings...</p>):(
+            <div>
+              {upcomingMeets&&upcomingMeets.length>0?(
+                <ul>
+                  {upcomingMeets.map((meet,ind)=>(
+                    <li key={meet.id}>
+                      {ind+1}. {meet.event.title} on {format(new Date(meet.startTime),"MMMM d,yyyy h:mm a")} with {meet.name}
+                    </li>
+                  ))}
+                </ul>):(<p>No Upcoming Meetings Found</p>)
+              }
+            </div>
+          )}
+        </CardContent>
       </Card>
 
       <Card className="mt-4">

@@ -6,3 +6,11 @@ const layout = ({children}) => {
 };
 
 export default layout;
+
+
+export async function generateMetadata(){
+  return{
+    title:"Generate Availability | Schedulla",
+    description:"Book Your availability"
+  }
+}

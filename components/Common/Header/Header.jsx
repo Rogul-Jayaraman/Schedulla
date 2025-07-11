@@ -8,7 +8,7 @@ import { Button } from "../../ui/button";
 import UserMenu from "./Layout/UserMenu";
 import { PenBox } from "lucide-react";
 import { SignedIn, SignedOut, UserButton, SignInButton } from "@clerk/nextjs";
-import { checkUser } from "@/lib/checkUser";
+import { checkUser } from "@/assets/server/user/checkUser";
 
 async function Header() {
   await checkUser();

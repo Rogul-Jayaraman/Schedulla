@@ -100,7 +100,7 @@ function generateAvailableSlots(
     if(!isSlotAvail){
       slots.push(format(slotStartTime,"HH:mm"));
     }
-    slotStartTime = addMinutes(slotEnd,timeGap);
+    slotStartTime = slotEnd;
   }
   return slots;
 }
