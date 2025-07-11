@@ -21,7 +21,7 @@ import HowItWorks from "@/components/Home/HowItWorks";
 
 export default function Home() {
   return (
-    <main className="container px-10 mx-auto lg:px-0  py-10 ">
+    <main className="container px-10 mx-auto  py-10 ">
       <div className="flex flex-col lg:flex-row items-center justify-between gap-12 mb-24">
         <div className="lg:w-1/2 lg:px-0 ">
           <h1 className="text-5xl md:text-7xl gradient-title mb-3">
