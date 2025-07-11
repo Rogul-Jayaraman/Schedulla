@@ -5,6 +5,8 @@ import Header from "@/components/Common/Header/Header.jsx";
 import { Inter } from "next/font/google";
 import { ClerkProvider } from "@clerk/nextjs";
 import CreateNewEvent from "@/components/Event/CreateNewEvent";
+import { Suspense } from "react";
+import PageNotFound from "./not-found";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -34,7 +36,9 @@ export default function RootLayout({ children }) {
           </footer>
 
           {/* button action -> event/create?true */}
-          <CreateNewEvent />
+          <Suspense fallback={<PageNotFound/>}>
+            <CreateNewEvent />
+          </Suspense>
         </body>
       </html>
     </ClerkProvider>
