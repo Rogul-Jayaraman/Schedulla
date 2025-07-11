@@ -1,10 +1,11 @@
-import { Suspense } from "react";
-import PageNotFound from "@/components/PageNotFound"; // Assuming your file is here
+import React from "react";
 
-export default function NotFoundPage() {
+const PageNotFound = () => {
   return (
-    <Suspense fallback={<div className="p-4">Loading...</div>}>
-      <PageNotFound />
-    </Suspense>
+    <div className="md:text-6xl text-4xl font-extrabold h-[100dvh] px-5 flex items-center justify-center ">
+      <h1 className="text-teal-900">404 - Page Not Found</h1>
+    </div>
   );
-}
+};
+
+export default PageNotFound;
