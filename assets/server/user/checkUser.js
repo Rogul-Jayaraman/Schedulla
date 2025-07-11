@@ -2,12 +2,13 @@ import db from "../../../lib/prisma";
 import { currentUser, clerkClient } from "@clerk/nextjs/server";
 
 export const checkUser = async() =>{
-    const user = await currentUser();
-    if(!user){
-        return null;
-    } 
     // db -> will imported from prisma.js
+    const user = await currentUser();
     try{
+        if(!user){
+            return null;
+        } 
+        
         // user already logged in return the user 
         const loggedInUser = await db?.user.findUnique({
             where : {
